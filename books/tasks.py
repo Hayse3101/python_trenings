@@ -61,3 +61,39 @@ while i < nums5:
 
 # ------------ Задача №9 ------------
 
+
+def func1(arr: list) -> int:
+    i = 0
+    max_value = 0
+    min_value = 0
+    while i < len(arr):
+        print(f" - Итерация {i} - arr[i] = {arr[i]}")
+        if max_value < arr[i]:
+            min_value = max_value
+            max_value = arr[i]
+        else:
+            min_value = arr[i]
+        print(f" -- Итерация {i} - min_value = {min_value}, max_value = {max_value}")
+        i += 1
+    return min_value
+
+
+arr3: list = [3, 1, 5, 6, 2, 9, 0, 7, 8]
+print(f"Второе по величине число в списке - {func1(arr3)}")
+
+# ------------ Задача №10 ------------
+
+
+def func2(num: int) -> int:
+    i: int = 0
+    sum_nums: int = 0
+    while i < num:
+        if i % 2 != 0:
+            sum_nums += i
+        i += 1
+
+    return sum_nums
+
+
+nums7: int = int(input("Введите количество чисил: "))
+print(f"Сумма нечетных чисел = {func2(nums7)}")
