@@ -97,3 +97,75 @@ def func2(num: int) -> int:
 
 nums7: int = int(input("Введите количество чисил: "))
 print(f"Сумма нечетных чисел = {func2(nums7)}")
+
+# ------------ Задача №11 ------------
+num1 = int(input("Введите число: "))
+arr4 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+digit1 = 0
+while num1 > 0:
+    digit1 = num1 % 10
+    for i in range(11):
+        if digit1 == i:
+            arr4[i] += 1
+    num1 = num1 // 10
+
+print(f"В ведённом числе 0 - {arr4[0]}, 1 - {arr4[1]}, 2 - {arr4[2]}, 3 - {arr4[3]}, 4 - {arr4[4]},"
+      f" 5 - {arr4[5]}, 6 - {arr4[6]}, 7 - {arr4[7]}, 8 - {arr4[8]}, 9 - {arr4[9]}")
+
+# ------------ Задача №12 ------------
+num2 = int(input("Введите число: "))
+digit2 = 0
+digit_str2 = ""
+
+while num2 > 0:
+    digit2 = num2 % 10
+    digit_str2 += str(9 - digit2)
+    num2 = num2 // 10
+
+print(f"Изменённое число - {digit_str2}")
+
+# ------------ Задача №13 ------------
+arr5 = [4, 12, 5, 0, 64, 10, 5]
+digit_str1 = ""
+for i in arr5:
+    digit_str1 += str(i)
+
+print(f"Объединенные числа из списка - {digit_str1}")
+
+# ------------ Задача №14 ------------
+arr6 = [3, 1, 5, 0, 2, 4]
+arr7 = [3, 2, 5, 0, 2, 4]
+count1 = 0
+flag1 = True
+
+equality = "У списков разная длина" if len(arr6) != len(arr7) else "Списки одинаковой длины"
+for i in arr6:
+    for j in arr7:
+        if i == j:
+            count1 += 1
+            break
+    else:
+        print("Списки не равны")
+        flag1 = False
+    if flag1:
+        pass
+    else:
+        break
+    count1 = 0
+else:
+    print("Списки равны")
+print(equality)
+
+# ------------ Задача №15 ------------
+arr8 = [2, 5, 6]
+num8 = int(input("Введите верхнюю границу: "))
+digit_sum1 = 0
+
+for i in range(0, num8 + 1):
+    if i in arr8:
+        continue
+    else:
+        digit_sum1 += i
+
+print(f"Сумма чисел согласно условиям - {digit_sum1}")
