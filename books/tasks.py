@@ -225,3 +225,20 @@ elif num_a1 == 0 and num_b1 == 1:
     print("Решение любое число!")
 
 # - Использование исключений -
+
+# ------------ Задача №21 ------------
+txt = input("Введите предложение: ")
+num = int(input("Введите отступ по индексу: "))
+tuple_txt = tuple(i for i in txt)
+print(f"Полученный кортеж: {tuple_txt}")
+tuple_txt_index = tuple(i for i in tuple_txt if tuple_txt.index(i) % num == 0)
+print(f"Новый кортеж, полученный из страого: {tuple_txt_index}")
+
+# ------------ Задача №22 ------------
+num2 = int(input("Введите число для формирования кортежа: "))
+tuple_int = tuple(i for i in range(num2 + 1))
+print(f"Созданный кортеж: {tuple_int}")
+tuple_int_copy = tuple_int[:]
+tuple_int_copy = sorted(tuple_int_copy)
+tuple_int_copy.sort(reverse=True)
+print(f"Список с перевёрнутыми значениями - {tuple_int} {tuple_int_copy}")
