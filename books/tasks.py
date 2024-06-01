@@ -228,10 +228,10 @@ elif num_a1 == 0 and num_b1 == 1:
 
 # ------------ Задача №21 ------------
 txt = input("Введите предложение: ")
-num = int(input("Введите отступ по индексу: "))
+num10 = int(input("Введите отступ по индексу: "))
 tuple_txt = tuple(i for i in txt)
 print(f"Полученный кортеж: {tuple_txt}")
-tuple_txt_index = tuple(i for i in tuple_txt if tuple_txt.index(i) % num == 0)
+tuple_txt_index = tuple(i for i in tuple_txt if tuple_txt.index(i) % num10 == 0)
 print(f"Новый кортеж, полученный из страого: {tuple_txt_index}")
 
 # ------------ Задача №22 ------------
@@ -242,3 +242,107 @@ tuple_int_copy = tuple_int[:]
 tuple_int_copy = sorted(tuple_int_copy)
 tuple_int_copy.sort(reverse=True)
 print(f"Список с перевёрнутыми значениями - {tuple_int} {tuple_int_copy}")
+
+# ------------ Задача №23 ------------
+from random import randint
+
+
+def list_func(list_count_1: int, list_count_2: int):
+    alphabet = [chr(i) for i in range(97, 123)]
+    arr_txt1 = []
+    for _ in range(list_count_1):
+        for _ in range(list_count_2):
+            arr_txt1.append(alphabet[randint(0, len(alphabet))])
+    return arr_txt1
+
+
+num11 = int(input("Введите размер списка №1: "))
+num12 = int(input("Введите размер списка №2: "))
+print(f"Полученные список: {list_func(num11, num12)}")
+
+# ------------ Задача №24 ~ ------------
+
+
+def gener_list(gen_list: list):
+    count = 0
+    for i in range(len(gen_list[0])):
+        gen_list[0][i] = count
+        count += 1
+
+    for i in range(len(gen_list) - 1):
+        gen_list[i + 1][len(gen_list) - 1] = count
+        count += 1
+
+    for i in range(len(gen_list[-1]) - 1):
+        gen_list[-1][-2-i] = count
+        count += 1
+
+    for i in range(len(gen_list) - 2):
+        gen_list[-2-i][0] = count
+        count += 1
+
+    return gen_list
+
+
+num13 = int(input("Введите количество столбцов: "))
+num14 = int(input("Введите количество строк: "))
+list_num1 = [[0 for i in range(num13)] for j in range(num14)]
+print(f"Список: {gener_list(list_num1)}")
+
+# ------------ Задача №25 ------------
+num15 = int(input("Введите количество столбцов: "))
+num16 = int(input("Введите количество строк: "))
+list_num2 = [[randint(0, 9) for i in range(num15)] for j in range(num16)]
+print()
+print(f"Список: {list_num2}")
+print()
+num17 = int(input("Какой столбик удалить?: "))
+num18 = int(input("Какую строчку удалить?: "))
+
+list_num2.pop(num17)
+for i in range(len(list_num2)):
+    del list_num2[i][num18]
+
+print(f"Обновлённыый список: {list_num2}")
+
+# ------------ Задача №26 ------------
+
+arr10 = [2, 4, 1, 5, 6, 3, 0, 9, 7, 8]
+print(f"Неотсортированный список: {arr10}\n")
+
+for i in range(len(arr10)):
+    for j in range(len(arr10)):
+        if arr10[i] < arr10[j]:
+            arr10[i], arr10[j] = arr10[j], arr10[i]
+
+print(f"Отсортированный список: {arr10}")
+
+# ------------ Задача №27 ------------
+
+
+def list_func_2(list_1: list):
+    max_value = []
+    index_value = []
+    for i in list_1:
+        if max(list_1) == i:
+            max_value.append(i)
+    for i in max_value:
+        index_value.append(max_value.index(i))
+
+    print(f"Наибольший элемент(ы) - {max_value}. Индекс(ы) - {index_value}")
+
+
+arr8 = [randint(0, 9) for _ in range(10)]
+print(f"Список: {arr8}")
+list_func_2(arr8)
+
+# ------------ Задача №28 ------------
+arr9 = [randint(0, 9) for _ in range(10)]
+print(f"Список: {arr9}")
+
+for i in arr9:
+    if arr9.index(i) % 2 == 0:
+        pass
+
+# ------------ Задача №29 ------------
+# ------------ Задача №30 ------------
