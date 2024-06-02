@@ -345,4 +345,25 @@ for i in arr9:
         pass
 
 # ------------ Задача №29 ------------
+arr11 = [randint(0, 9) for _ in range(10)]
+print(f"Список: {arr11}")
+
+for i in range(len(arr11)):
+    pass
+
+print(f"Новый список: {arr11}")
+
 # ------------ Задача №30 ------------
+arr12 = [2, 4, 1, 7, 5, 9, 6, 8, 0, 3]
+arr13 = [1, 2, 4, 5, 6, 3, 0, 9, 7, 8]
+arr14 = []
+count = 0
+
+for i in arr12:
+    for j in range(count, len(arr13)):
+        arr14.append(i)
+        arr14.append(arr13[j])
+        count += 1
+        break
+
+print(f"Список: {arr14}")
