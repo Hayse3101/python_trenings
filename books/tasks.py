@@ -367,3 +367,63 @@ for i in arr12:
         break
 
 print(f"Список: {arr14}")
+
+# ------------ Задача №31 ------------
+set_int0 = set()
+
+for i in range(15):
+    if len(set_int0) < 5:
+        set_int0.add(randint(1, 10))
+    else:
+        set_int0.add(randint(10, 30))
+
+print(f"Сформированое множество: {set_int0}")
+
+# ------------ Задача №32 ------------
+num19 = int(input("Введите первое число: "))
+num20 = int(input("Введите второе число: "))
+
+set_int1 = {i for i in range(num19)}
+set_int2 = {i for i in range(num20)}
+print(f"Составные цифры первого числа: {set_int1}")
+print(f"Составные цифры второго числа: {set_int2}")
+print("-------------------------------------")
+print(f"Цифры. которые есть в обоих числах: {set_int1.intersection(set_int2)}")
+
+# ------------ Задача №33 ------------
+set_txt1 = set(input("Введите текст: "))
+print(set_txt1)
+vse_gls = {"а", "е", "ё", "и", "о", "у", "ы", "э", "ю", "я"}
+gls_txt = {s for s in set_txt1 if s in vse_gls}
+
+print(f"Гласные буквы в тексте: {gls_txt}")
+
+# ------------ Задача №34 ------------
+set_int3 = {n for n in range(100) if n % 3 == 0}
+set_int4 = {n for n in range(100) if n % 4 == 0}
+
+print(f"Числа которые не делятся на 3 и 4 одновременно: {set_int3 - set_int4} и {set_int4 - set_int3}")
+
+# ------------ Задача №35 ------------
+set_tuple = set()
+count = 0
+nums8 = [2*i+1 for i in range(20)]
+
+for i in range(10):
+    test_tuple = tuple(i for i in nums8[:2])
+    nums8 = nums8[2:]
+    set_tuple.add(test_tuple)
+
+print(f"Множество с кортежами: {set_tuple}")
+
+# ------------ Задача №36 ------------
+num21 = int(input("Введите число: "))
+
+if num21 < 0:
+    num21 *= -1
+
+list_int1 = [i for i in range(1, num21 + 1)]
+dict_1 = {list_int1[i]: list_int1[-i - 1] for i in range(len(list_int1))}
+
+print(f"Сформированны словарь: {dict_1}")
+
