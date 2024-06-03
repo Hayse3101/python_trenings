@@ -427,3 +427,38 @@ dict_1 = {list_int1[i]: list_int1[-i - 1] for i in range(len(list_int1))}
 
 print(f"Сформированны словарь: {dict_1}")
 
+# ------------ Задача №37 ------------
+value_txt1 = input("Введите текст: ")
+count2 = 0
+set_txt2 = {i for i in value_txt1}
+dict_txt1 = {i: 0 for i in set_txt2}
+
+for i in value_txt1:
+    if i in dict_txt1:
+        dict_txt1[i] += 1
+
+print(f"Разделение по буквам: {dict_txt1}")
+
+# ------------ Задача №38 ------------
+list_txt1 = [input("Введите фамилию авторов: ") for _ in range(int(input("Сколько авторов вы хатите ввести: ")))]
+dict_txt2 = {list_txt1[i]: input(f"Произведение автора {list_txt1[i]}: ") for i in range(len(list_txt1))}
+
+print(f"Готовый словарь: {dict_txt2}")
+
+# ------------ Задача №39 ------------
+txt_value1 = input("Введите текстовое значение: ")
+set_txt3 = {i for i in txt_value1}
+dict_txt2 = {i: '' for i in set_txt3}
+
+for i in dict_txt2.keys():
+    for j in txt_value1:
+        if i != j:
+            dict_txt2[i] += j
+
+print(f"Созданный словарь: {dict_txt2}")
+
+# ------------ Задача №40 ~ ------------
+dict_num1 = {i: i*2+1 for i in range(10)}
+dict_num2 = {i: i**2 for i in range(10)}
+
+print(f"Готовы словарь: {dict_num1}, {dict_num2}")
