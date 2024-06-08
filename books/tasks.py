@@ -526,6 +526,9 @@ else:
     max_len_txt = list_txt3
     min_len_txt = list_txt2
 
+max_len_txt += "*"
+min_len_txt += "*"
+
 for i in max_len_txt:
     count = 0
     new_txt_value2 += i
@@ -535,8 +538,6 @@ for i in max_len_txt:
             count += 1
             break
     min_len_txt = min_len_txt[count:]
-else:
-    new_txt_value2 += '*'
 
 print(f"Полученный текст: {new_txt_value2}")
 
