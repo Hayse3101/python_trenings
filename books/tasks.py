@@ -462,3 +462,83 @@ dict_num1 = {i: i*2+1 for i in range(10)}
 dict_num2 = {i: i**2 for i in range(10)}
 
 print(f"Готовы словарь: {dict_num1}, {dict_num2}")
+
+# ------------ Задача №41 ------------
+txt_input1 = input("Введите текст: ")
+remove_txt1 = txt_input1.replace("*", " Hello Python ")
+print(remove_txt1)
+
+for i in txt_input1:
+    if i == '*':
+        print("Hello Python")
+
+# ------------ Задача №42 ------------
+txt_input2 = input("Введите текст: ")
+remove_txt2 = txt_input2.replace("*", "A")
+print(remove_txt2)
+
+for i in txt_input2:
+    if i == '*':
+        print("A")
+
+# ------------ Задача №43 ------------
+txt_input3 = input("Введите текст: ")
+txt_value2 = ""
+
+for i in txt_input3:
+    if i == i.lower():
+        txt_value2 += i.upper()
+    else:
+        txt_value2 += i.lower()
+
+print(f"Полученный текст: {txt_value2}")
+
+# ------------ Задача №44 ------------
+txt_input4 = input("Введите текст: ")
+txt_list1 = "".join(txt_input4)
+new_txt_value1 = ""
+
+for i in range(len(txt_input4)):
+    if i + 2 > len(txt_input4) - 1:
+        new_txt_value1 += txt_list1[1]
+        new_txt_value1 += txt_list1[0]
+        break
+    else:
+        new_txt_value1 += txt_list1[i + 2]
+
+print(f"Полученный текст: {new_txt_value1}")
+
+# ------------ Задача №45 ------------
+txt_input5 = input("Введите первый текст: ")
+txt_input6 = input("Введите второй текст: ")
+new_txt_value2 = ""
+
+list_txt2 = ''.join(txt_input5)
+list_txt3 = ''.join(txt_input6)
+
+max_len_txt = None
+min_len_txt = None
+
+if len(list_txt2) > len(list_txt3):
+    max_len_txt = list_txt2
+    min_len_txt = list_txt3
+else:
+    max_len_txt = list_txt3
+    min_len_txt = list_txt2
+
+for i in max_len_txt:
+    count = 0
+    new_txt_value2 += i
+    if count <= len(min_len_txt):
+        for j in min_len_txt:
+            new_txt_value2 += j
+            count += 1
+            break
+    min_len_txt = min_len_txt[count:]
+else:
+    new_txt_value2 += '*'
+
+print(f"Полученный текст: {new_txt_value2}")
+
+# ------------ Задача №46 ------------
+
