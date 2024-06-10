@@ -1547,14 +1547,14 @@ mysum(1, 3, 5, 7)
 # ------ Лямбда-функции ------
 # -- 6.12 Использование лямбда-функции --
 num12 = 10
-L3 = lambda n: 2*n+1  # <- Функция на основе лямда-вырадения
+L3 = lambda n: 2 * n + 1  # <- Функция на основе лямда-вырадения
 # Проверка результата
 print("Нечётные числа: ")
 for k in range(num):
     print(L3(k), end=" ")
 
 # Новое значение
-L4 = lambda n: 2**n
+L4 = lambda n: 2 ** n
 # Проверка результата
 print("\nСтепени двойки: ")
 for k in range(num):
@@ -1563,7 +1563,7 @@ for k in range(num):
 # Прямой вызов лямда-функции
 print("\nКвадратные числа: ")
 for k in range(num):
-    print((lambda x: x*x)(k + 1), end=" ")
+    print((lambda x: x * x)(k + 1), end=" ")
 
 
 def calc1(x, y):  # <- Обычная функция
@@ -1572,12 +1572,14 @@ def calc1(x, y):  # <- Обычная функция
 
 F = lambda x, y: calc1(x, y)  # <- Использование функции в лямбда-выражении
 f = calc1  # <- Переменной присваивается имя функции
-calc1 = lambda x, y: x*y  # <- Имени функции присваивается лямбда-выражение
+calc1 = lambda x, y: x * y  # <- Имени функции присваивается лямбда-выражение
 
 # Проверка результата
 print(f"\nВызов F(3, 5): {F(3, 5)}")
 print(f"Вызов f(3, 5): {f(3, 5)}")
 print(f"Вызов calc1(3, 5): {calc1(3, 5)}")
+
+
 # --------------------------------
 
 # ------ Функция как аргумент и результат ------
@@ -1591,19 +1593,20 @@ def display(f, a, b):  # <- Аргумент функции - функция (и
 
 
 def mypow(n):  # <- Результат функции - функция
-    return lambda x: x**n
+    return lambda x: x ** n
 
 
 def apply(f, h):  # <- Аргумент функции - функции. Результат - функция
     def calc(x):
         return f(h(x))
+
     return calc
 
 
 # Определение функция
 A29 = mypow(2)
 B29 = mypow(3)
-C29 = apply(lambda x: 2*x+1, lambda x: 2*x)
+C29 = apply(lambda x: 2 * x + 1, lambda x: 2 * x)
 
 # Проверка результата
 print("x   ", end="")
@@ -1618,8 +1621,9 @@ display(C29, 1, 5)
 # Определение функции
 F1 = lambda f: lambda x: f(f(x))
 # Проверка результата
-print(f"F(x->x*x) (5): {F(lambda x: x*x)(5)}")
-print(f"F(x->2*x+1) (5): {F(lambda x: 2*x+1)(5)}")
+print(f"F(x->x*x) (5): {F(lambda x: x * x)(5)}")
+print(f"F(x->2*x+1) (5): {F(lambda x: 2 * x + 1)(5)}")
+
 
 # --------------------------------
 
@@ -1656,11 +1660,13 @@ for k in range(12):
     print(mysum1(k), end=" ")
 print("\nЧисла фибоначчи: ")
 for k in range(15):
-    print(fib(k+1), end=" ")
+    print(fib(k + 1), end=" ")
 print("\nИнверсия текста")
 show3("Hello Python")
 print("Инверсия списка")
 show3([1, 2, 3, 4, 5])
+
+
 # --------------------------------
 
 # ------ Декораторы функций ------
@@ -1669,15 +1675,15 @@ show3([1, 2, 3, 4, 5])
 
 
 def A(h):
-    return lambda x: h(x)*h(7-x)
+    return lambda x: h(x) * h(7 - x)
 
 
 def B(h):
-    return lambda x, y: h(x,y)+h(y,x)
+    return lambda x, y: h(x, y) + h(y, x)
 
 
 def C(h):
-    return lambda x: h(x,10-x)
+    return lambda x: h(x, 10 - x)
 
 
 # Функции с декораторами
@@ -1701,9 +1707,112 @@ print(f"f(3) = {f(3)}")
 print(f"F(5, 7) = {F(5, 7)}")
 print(f"H(6) = {H(6)}")
 
+
 # --------------------------------
 
 # ------ Функции-генераторы ------
 # -- 6.16 Функции-генераторы --
+# Функции-генераторы
+
+
+def names():
+    yield "Дядя Федор"
+    yield "Пес Шарик"
+    yield "Кот Матроскин"
+
+
+def colors():
+    L = ["Красный", "Желтый", "Зеленый", "Синий"]
+    for clr in L:
+        yield clr
+
+
+def myrange(n):
+    for k in range(n):
+        yield 2 * k + 1
+
+
+# Использование функции-генераторов
+print("Они из Простоквашино: ")
+for name in names():
+    print(name)
+print(list(names()))
+R = colors()
+print("Цветовой спектр: ")
+for r in R:
+    print(r, end=" ")
+print("\nЕщё одна попытка...")
+for r in R:
+    print(r, end=" ")
+print("Ничего нет? Это нормально")
+print("Нечетные числа: ")
+print(list(myrange(10)))
+print(tuple(myrange(10)))
+N1 = myrange(8)
+A30 = list(N1)
+print(f"A = {A30}")
+B30 = list(N1)
+print(f"B = {B30}")
+for num in myrange(8):
+    print(num, end=" ")
+print()
+
+
 # --------------------------------
 
+# ------ Аннотации и документирование в функциях ------
+# -- 6.17 Использование документирования --
+# Функции с документированием
+
+
+def show4(txt):
+    """Это функция show() с одним аргументом."""
+    print(f"Единственный аргумент: {txt}")
+
+
+def display1(a, b):
+    """ Это функция display() с двумя аргументами. """
+    print(f"[1] Первый аргумент: {a}")
+    print(f"[2] Первый аргумент: {b}")
+
+
+def hello():  # <- Функция без документирования
+    print("Всем привет!")
+
+
+# Вызов функция и проверка документирования
+print(show.__doc__)
+show4('A')
+print(display1.__doc__)
+display1('B', 'C')
+
+f = show  # <- Переменная ссылается на функцию
+# Вызов функций и проверка документирования
+print(f.__doc__)
+f('D')
+display1.__doc__ = "Новый текст для display()"  # <- Новый текст документирования для функции
+# Проверка результата
+print(display1.__doc__)
+display1('E', 'F')
+hello.__doc__ = "Функция hello()"  # <-Создается документирование для функции
+# Проверка результата
+print(hello.__doc__)
+hello()
+
+
+# --------------------------------
+
+# -- 6.18 Использование аннотаций --
+
+
+def show5(txt: "Текст" = "Функция show()") -> "Результата нет":  # <- Функция с аннотациями
+    print(txt)
+
+
+show5()  # <- Вызов функции
+print(show5.__annotations__)  # <- Словарь аннотаций
+# Аннотации
+for k in show.__annotations__:
+    print(f"{k} - {show5.__annotations__[k]}")
+
+# --------------------------------
