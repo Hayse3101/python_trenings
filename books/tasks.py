@@ -542,5 +542,77 @@ for i in max_len_txt:
 print(f"Полученный текст: {new_txt_value2}")
 
 # ------------ Задача №46 ------------
-txt_input7 = input("Зашифрованый текст: ")
+txt_input7 = input("Введите текст: ")
+encoded_txt1 = txt_input7
+letter_value1 = txt_input7[:1]
+encoded_txt1 = encoded_txt1[1:] + letter_value1
+
+decrypted_txt1 = letter_value1 + encoded_txt1[:len(encoded_txt1) - 1]
+
+
+print(f"Зашифрованное значение: {encoded_txt1}")
+print(f"Расшифрованное значение: {decrypted_txt1}")
+
+# ------------ Задача №47 ------------
+txt_input8 = input("Введите текст: ")
+encoded_txt2 = txt_input8
+letters_value1 = encoded_txt2[len(txt_input8) - 2:]
+encoded_txt2 = letters_value1 + encoded_txt2[:-2]
+
+decrypted_txt2 = encoded_txt2[2:] + letters_value1
+
+print(f"Зашифрованное значение: {encoded_txt2}")
+print(f"Расшифрованное значение: {decrypted_txt2}")
+
+# ------------ Задача №48 ~ ------------
+txt_input9 = input("Введите текст: ")
+list_txt4 = [i for i in txt_input9]
+letters_gls = ["а", "е", "ё", "и", "о", "у", "ы", "э", "ю", "я"]
+letters_sgls = ['б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п',
+                'р', 'с', 'т', 'ф', 'х', 'ц', 'ч', 'ш', 'щ',]
+
+new_txt_value3 = ""
+
+first_gls = ""
+first_sgls = ""
+second_gls = ""
+second_sgls = ""
+
+for i in list_txt4:
+    pass
+
+print(f"Рузльтат шифровки: {new_txt_value3}")
+
+# ------------ Задача №49 ------------
+txt_input10 = input("Введите текст: ")
+list_words1 = txt_input10.split()
+max_word = ""
+min_word = ""
+
+for word in list_words1:
+    if len(word) > len(max_word):
+        max_word, min_word = word, max_word
+
+    if len(word) < len(min_word):
+        min_word = word
+
+list_words1.remove(max_word)
+list_words1.remove(min_word)
+new_txt_value3 = " ".join(list_words1)
+
+print(f"Новый текст: {new_txt_value3}")
+
+# ------------ Задача №50 ------------
+txt_input11 = input("Введите текст: ")
+list_words2 = txt_input11.split()
+revers_list_words2 = []
+
+for word in list_words2:
+    revers_list_words2.append(word[::-1])
+
+new_txt_value3 = " ".join(revers_list_words2)
+
+print(f"Новый текст: {new_txt_value3}")
+
+# ------------ Задача №51 ------------
 
