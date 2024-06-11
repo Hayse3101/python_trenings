@@ -616,3 +616,77 @@ print(f"Новый текст: {new_txt_value3}")
 
 # ------------ Задача №51 ------------
 
+
+def func3(arr_one: list, arr_two: list):
+    mult_value = 0
+    sum_value = 0
+    if len(arr_one) > len(arr_two):
+        diff_value = len(arr_one) - len(arr_two)
+        arr_two += [arr_one[i] for i in range(diff_value)]
+    else:
+        diff_value = len(arr_two) - len(arr_one)
+        arr_one += [arr_two[i] for i in range(diff_value)]
+
+    for i in range(len(arr_one)):
+        mult_value = arr_one[i] * arr_two[i]
+        sum_value += mult_value
+
+    return sum_value
+
+
+print(f"Рузультат работы функции: {func3([0, 1, 2, 3, 4], [5, 6, 7, 8, 9])}")
+
+# ------------ Задача №52 ------------
+
+
+def func4(arr: list) -> list:
+    return [i for i in arr if i % 2 == 0]
+
+
+print(f"Рузультат работы функции: {func4([i for i in range(10)])}")
+# ------------ Задача №53 ------------
+
+
+def func5(*args):
+    yield sum(args) / 2
+    yield max(args)
+    yield min(args)
+
+
+for i in func5(4, 2, 3, 1, 7, 8, 9, 0, 2):
+    print(f"Полученные значения: {i}", end=" ")
+# ------------ Задача №54 ~ ------------
+
+
+def func6(txt_value: str, *int_value):
+    sorted_int = list(int_value)
+    sorted_int.sort()
+    result_txt = {key: value for key, value in zip(txt_value, sorted_int)}
+
+    return result_txt
+
+
+print(f"Рузльтат: {func6("Hello World", 0, 2, 1, 4, 5, 6, 8, 3, 9, 7, 10, 11)}")
+
+# ------------ Задача №55 ------------
+
+
+def func7(func, value_int_1, value_int_2):
+    int_value = randint(value_int_1, value_int_2)
+    func(int_value)
+
+
+def func8(value_int_1, value_int_2):
+    global max_value
+
+    if value_int_1 > value_int_2:
+        max_value = value_int_1
+
+
+max_value = 0
+count3 = int(input("Сколько чисел вводить?: "))
+for i in range(count3):
+    print(f"Наибольшое число {func7(func8, 10, 50)}")
+
+# ------------ Задача №56 ------------
+
