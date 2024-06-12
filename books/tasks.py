@@ -59,6 +59,7 @@ while i < nums5:
     print(f"Числа фибоначчи: {fib_sum}")
     i += 1
 
+
 # ------------ Задача №9 ------------
 
 
@@ -80,6 +81,7 @@ def func1(arr: list) -> int:
 
 arr3: list = [3, 1, 5, 6, 2, 9, 0, 7, 8]
 print(f"Второе по величине число в списке - {func1(arr3)}")
+
 
 # ------------ Задача №10 ------------
 
@@ -260,6 +262,7 @@ num11 = int(input("Введите размер списка №1: "))
 num12 = int(input("Введите размер списка №2: "))
 print(f"Полученные список: {list_func(num11, num12)}")
 
+
 # ------------ Задача №24 ~ ------------
 
 
@@ -274,11 +277,11 @@ def gener_list(gen_list: list):
         count += 1
 
     for i in range(len(gen_list[-1]) - 1):
-        gen_list[-1][-2-i] = count
+        gen_list[-1][-2 - i] = count
         count += 1
 
     for i in range(len(gen_list) - 2):
-        gen_list[-2-i][0] = count
+        gen_list[-2 - i][0] = count
         count += 1
 
     return gen_list
@@ -316,6 +319,7 @@ for i in range(len(arr10)):
             arr10[i], arr10[j] = arr10[j], arr10[i]
 
 print(f"Отсортированный список: {arr10}")
+
 
 # ------------ Задача №27 ------------
 
@@ -407,7 +411,7 @@ print(f"Числа которые не делятся на 3 и 4 одновре
 # ------------ Задача №35 ------------
 set_tuple = set()
 count = 0
-nums8 = [2*i+1 for i in range(20)]
+nums8 = [2 * i + 1 for i in range(20)]
 
 for i in range(10):
     test_tuple = tuple(i for i in nums8[:2])
@@ -458,8 +462,8 @@ for i in dict_txt2.keys():
 print(f"Созданный словарь: {dict_txt2}")
 
 # ------------ Задача №40 ~ ------------
-dict_num1 = {i: i*2+1 for i in range(10)}
-dict_num2 = {i: i**2 for i in range(10)}
+dict_num1 = {i: i * 2 + 1 for i in range(10)}
+dict_num2 = {i: i ** 2 for i in range(10)}
 
 print(f"Готовы словарь: {dict_num1}, {dict_num2}")
 
@@ -549,7 +553,6 @@ encoded_txt1 = encoded_txt1[1:] + letter_value1
 
 decrypted_txt1 = letter_value1 + encoded_txt1[:len(encoded_txt1) - 1]
 
-
 print(f"Зашифрованное значение: {encoded_txt1}")
 print(f"Расшифрованное значение: {decrypted_txt1}")
 
@@ -569,7 +572,7 @@ txt_input9 = input("Введите текст: ")
 list_txt4 = [i for i in txt_input9]
 letters_gls = ["а", "е", "ё", "и", "о", "у", "ы", "э", "ю", "я"]
 letters_sgls = ['б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п',
-                'р', 'с', 'т', 'ф', 'х', 'ц', 'ч', 'ш', 'щ',]
+                'р', 'с', 'т', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', ]
 
 new_txt_value3 = ""
 
@@ -614,6 +617,7 @@ new_txt_value3 = " ".join(revers_list_words2)
 
 print(f"Новый текст: {new_txt_value3}")
 
+
 # ------------ Задача №51 ------------
 
 
@@ -636,6 +640,7 @@ def func3(arr_one: list, arr_two: list):
 
 print(f"Рузультат работы функции: {func3([0, 1, 2, 3, 4], [5, 6, 7, 8, 9])}")
 
+
 # ------------ Задача №52 ------------
 
 
@@ -644,6 +649,8 @@ def func4(arr: list) -> list:
 
 
 print(f"Рузультат работы функции: {func4([i for i in range(10)])}")
+
+
 # ------------ Задача №53 ------------
 
 
@@ -655,6 +662,8 @@ def func5(*args):
 
 for i in func5(4, 2, 3, 1, 7, 8, 9, 0, 2):
     print(f"Полученные значения: {i}", end=" ")
+
+
 # ------------ Задача №54 ~ ------------
 
 
@@ -667,6 +676,7 @@ def func6(txt_value: str, *int_value):
 
 
 print(f"Рузльтат: {func6("Hello World", 0, 2, 1, 4, 5, 6, 8, 3, 9, 7, 10, 11)}")
+
 
 # ------------ Задача №55 ------------
 
@@ -688,5 +698,72 @@ count3 = int(input("Сколько чисел вводить?: "))
 for i in range(count3):
     print(f"Наибольшое число {func7(func8, 10, 50)}")
 
+
 # ------------ Задача №56 ------------
 
+
+def func9(func, num: int):
+    for n in range(num):
+        if n % 2 == 0:
+            func(n)
+
+
+def func10(num: int):
+    global int_value
+
+    int_value += num
+
+
+int_value = 0
+func9(func10, 10)
+print(f"Сумма четных значений: {int_value}")
+# ------------ Задача №57 ------------
+
+
+def func11(txt_value: str):
+    if len(txt_value) == 0:
+        return
+    else:
+        letter_value2 = txt_value[:1]
+
+        print(f"Буква: {letter_value2}")
+        func11(txt_value[1:])
+
+
+func11("Hello World")
+
+# ------------ Задача №58 ------------
+
+
+def func12(value: int, factor: int, flag: int):
+    if flag == 0:
+        return value
+    else:
+        print(f"{factor} * {value} = {factor * value}")
+        value = factor * value
+        return func12(value, factor, flag - 1)
+
+
+func12(1, 3, 10)
+
+# ------------ Задача №59 ------------
+
+
+def func13(num: int):
+    for i in range(num):
+        yield input("Введите месяц: ")
+
+
+count_month = int(input("Сколько месяцев Вы знаете?: "))
+print(f"Месяца: {func13(count_month)}")
+
+# ------------ Задача №60 ------------
+
+
+def func14(num: int):
+    for i in range(num):
+        yield 2**i
+
+
+num22 = int(input("Количетсов степеней двойки: "))
+print(f"Степени двойки - {list(func14(num22))}")
