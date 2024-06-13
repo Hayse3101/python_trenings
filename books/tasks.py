@@ -1,5 +1,7 @@
 # -------------------- Задачи предоставленные в книгах --------------------
+import datetime
 import random
+from datetime import date
 from fractions import Fraction
 
 # ------------ Задача №1 ------------
@@ -719,6 +721,8 @@ def func10(num: int):
 int_value = 0
 func9(func10, 10)
 print(f"Сумма четных значений: {int_value}")
+
+
 # ------------ Задача №57 ------------
 
 
@@ -734,6 +738,7 @@ def func11(txt_value: str):
 
 func11("Hello World")
 
+
 # ------------ Задача №58 ------------
 
 
@@ -748,6 +753,7 @@ def func12(value: int, factor: int, flag: int):
 
 func12(1, 3, 10)
 
+
 # ------------ Задача №59 ------------
 
 
@@ -759,16 +765,18 @@ def func13(num: int):
 count_month = int(input("Сколько месяцев Вы знаете?: "))
 print(f"Месяца: {func13(count_month)}")
 
+
 # ------------ Задача №60 ------------
 
 
 def func14(num: int):
     for i in range(num):
-        yield 2**i
+        yield 2 ** i
 
 
 num22 = int(input("Количетсов степеней двойки: "))
 print(f"Степени двойки - {list(func14(num22))}")
+
 
 # ------------ Задача №61 ------------
 
@@ -828,11 +836,65 @@ denominator2 = int(input("Введите знаменатель 2: "))
 rational_fraction_one = Fraction(numerator1, denominator1)
 rational_fraction_two = Fraction(numerator2, denominator2)
 
-result_list = [rational_fraction_one + rational_fraction_two, rational_fraction_one - rational_fraction_two,
-               rational_fraction_one * rational_fraction_two, rational_fraction_one / rational_fraction_two]
+result_list1 = [rational_fraction_one + rational_fraction_two, rational_fraction_one - rational_fraction_two,
+                rational_fraction_one * rational_fraction_two, rational_fraction_one / rational_fraction_two]
 
-print(f"Максимальное значение: {max(result_list)}")
-print(f"Минимальное значение: {min(result_list)}")
+print(f"Максимальное значение: {max(result_list1)}")
+print(f"Минимальное значение: {min(result_list1)}")
 
 # ------------ Задача №66 ------------
+int_a1 = int(input("Введите a1: "))
+int_a2 = int(input("Введите a2: "))
+int_b1 = int(input("Введите b1: "))
+int_b2 = int(input("Введите b2: "))
 
+complex_number_one = complex(int_a1, int_b1)
+complex_number_two = complex(int_a2, int_b2)
+
+result_list2 = [abs(complex_number_one + complex_number_two), abs(complex_number_one - complex_number_two),
+                abs(complex_number_one * complex_number_two), abs(complex_number_one / complex_number_two)]
+
+print(f"Максимальное значение: {max(result_list2)}")
+print(f"Минимальное значение: {min(result_list2)}")
+
+# ------------ Задача №67 ------------
+date_user_one = input("Введите первую дату: ")
+date_user_two = input("Введите вторую дату: ")
+
+date_one = date.fromisoformat(date_user_one)
+date_two = date.fromisoformat(date_user_two)
+day_difference = (date_one - date_two).days
+
+print(f"Колличество полных дней между датами: {day_difference}")
+
+# ------------ Задача №68 ------------
+user_time_str = input("Введите время: ")
+user_time_onj = datetime.datetime.strptime(user_time_str, '%Y-%m-%d %H:%M:%S.%f')
+current_time = datetime.datetime.now().time()
+
+print(f"Интервал времени: {user_time_onj.time() - current_time}")
+
+# ------------ Задача №69 ------------
+name_file = input("Введите имя файла: ")
+user_file = open(name_file + ".txt")
+new_txt_file = open("test.txt")
+k = 1
+for line in user_file:
+    new_line = f"[{str(k)}] - line"
+    new_txt_file.write(new_line)
+    k += 1
+
+user_file.close()
+new_txt_file.close()
+# ------------ Задача №70 ------------
+user_name_file = input("Введите имя файла: ")
+count_line = int(input("Введите колличество строк: "))
+content_user_file = [input("Строчка: ") for _ in range(count_line)]
+
+new_user_file = open(user_name_file + ".txt", 'x')
+k = 1
+for line in content_user_file:
+    new_user_file.write(line.swapcase())
+    k += 1
+
+new_user_file.close()
