@@ -1,4 +1,6 @@
 # -------------------- Задачи предоставленные в книгах --------------------
+import random
+from fractions import Fraction
 
 # ------------ Задача №1 ------------
 day = int(input("Какой сегодня день? "))
@@ -767,3 +769,70 @@ def func14(num: int):
 
 num22 = int(input("Количетсов степеней двойки: "))
 print(f"Степени двойки - {list(func14(num22))}")
+
+# ------------ Задача №61 ------------
+
+
+def convert_to(num, base, upper=False):
+    digits = '0123456789abcdefghijklmnopqrstuvwxyz'
+    if base > len(digits):
+        return None
+    result = ''
+    while num > 0:
+        result = digits[num % base] + result
+        num //= base
+    return result.upper() if upper else result
+
+
+notation, number1 = int(input("Введите систему счисления: ")), input("Введите число: ")
+print(f"Результат перевода: {convert_to(notation, number1)}")
+
+# ------------ Задача №62 ------------
+bit, int_number = int(input("Введите номер бита: ")), int(input("Введите целое число: "))
+
+binary_number = "{0:b}".format(bit)
+if bit not in range(len(binary_number)):
+    print("Invalid input")
+else:
+    print(binary_number, binary_number[bit])
+
+# ------------ Задача №63 ------------
+int_value1 = int(input("Введите число: "))
+binary_translation = bin(int_value1)
+binary_representation = str(binary_translation[2:])
+bit_sum = 0
+
+for bit in binary_representation:
+    sum += int(bit)
+
+print(f"Сумма значений всех битов: {bit_sum}")
+
+# ------------ Задача №64 ------------
+int_value2 = int(input("Введите целое число: "))
+oct_value = str(oct(int_value2)[2:])
+list_oct_value = list(oct_value)
+random.shuffle(list_oct_value)
+new_oct_value = ''
+for num in list_oct_value:
+    new_oct_value += num
+
+print(f"Полученное число: {oct_value}")
+print(f"Измененаый порядок: {new_oct_value}")
+
+# ------------ Задача №65 ------------
+numerator1 = int(input("Введите числитель 1: "))
+numerator2 = int(input("Введите числитель 2: "))
+denominator1 = int(input("Введите знаменатель 1: "))
+denominator2 = int(input("Введите знаменатель 2: "))
+
+rational_fraction_one = Fraction(numerator1, denominator1)
+rational_fraction_two = Fraction(numerator2, denominator2)
+
+result_list = [rational_fraction_one + rational_fraction_two, rational_fraction_one - rational_fraction_two,
+               rational_fraction_one * rational_fraction_two, rational_fraction_one / rational_fraction_two]
+
+print(f"Максимальное значение: {max(result_list)}")
+print(f"Минимальное значение: {min(result_list)}")
+
+# ------------ Задача №66 ------------
+
