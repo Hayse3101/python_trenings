@@ -664,7 +664,7 @@ def func5(*args):
     yield min(args)
 
 
-for i in func5(4, 2, 3, 1, 7, 8, 9, 0, 2):
+for i in func5(4, 2, 3, 1, 7, 8, 9, 0, 2, 3, 5, 67, 123, 2):
     print(f"Полученные значения: {i}", end=" ")
 
 
@@ -898,3 +898,130 @@ for line in content_user_file:
     k += 1
 
 new_user_file.close()
+
+
+# ------------ Задача №71 ------------
+
+
+class TestClass2:
+    def __init__(self, value_one, value_two):
+        self.value_one = value_one
+        self.value_two = value_two
+        print(f"Поля созданы")
+
+    def show_value(self):
+        print(f"Первое поле: {self.value_one}")
+        print(f"Второе поле: {self.value_two}")
+
+
+test_obj = TestClass2("Hello", "World")
+test_obj.show_value()
+
+
+# ------------ Задача №72 ------------
+
+
+class TestClass2:
+    def __init__(self, value_one, value_two):
+        if type(value_one) == str and type(value_two) == str:
+            self.txt_value = value_one + value_two
+            print("Поле создано")
+        elif type(value_one) == int and type(value_two) == int:
+            self.int_value = value_one + value_two
+            print("Поле создано")
+        else:
+            self.error = "Значения разные!"
+
+    def display_methods(self):
+        if hasattr(self, 'txt_value'):
+            print(f"Полученный текст: {self.txt_value}")
+        elif hasattr(self, 'int_value'):
+            print(f"Полученное число: {self.int_value}")
+        else:
+            print("Поля отсутствуют")
+
+
+test_obj_txt = TestClass2("Hello ", "World")
+test_obj_int = TestClass2(5, 5)
+test_obj_int_and_txt = TestClass2("Hello", 10)
+
+test_obj_txt.display_methods()
+test_obj_int.display_methods()
+test_obj_int_and_txt.display_methods()
+
+
+# ------------ Задача №73 ------------
+
+
+class TestClass3:
+    def __init__(self, value_list: list):
+        fields_int_list = []
+
+        for value in value_list:
+            if type(value) == int:
+                fields_int_list.append(value)
+
+        self.fields_int_list = fields_int_list
+
+    def display_fields_int_list(self):
+        for value in range(len(self.fields_int_list)):
+            print(f"[{value}] {self.fields_int_list[value]}")
+
+    def list_average(self):
+        print(f"Среднее значение списка: {sum(self.fields_int_list) / len(self.fields_int_list)}")
+
+
+test_obj_list_int = TestClass3([1, 3, 4, 5, 2, 8, 7, 9, 10])
+test_obj_list_int_str = TestClass3([1, 4, 6, 't', 6, 'h', 'q', 8])
+
+test_obj_list_int.display_fields_int_list()
+test_obj_list_int.list_average()
+
+test_obj_list_int_str.display_fields_int_list()
+test_obj_list_int_str.list_average()
+
+
+# ------------ Задача №74 ------------
+
+
+def func_create_obj1(list_str: list, name_class: str):
+    class TestClass4:
+        def __init__(self):
+            value_namber = 0
+            for value in list_str:
+                if type(value) == str:
+                    self.value = value_namber
+                    value_namber += 1
+
+        def display_fields(self):
+            for value in dir(self):
+                if not value.startswith("_") and value != "display_fields":
+                    print(f"{value} = {self.__dict__[value]}")
+
+    TestClass4.__name__ = name_class
+    return TestClass4
+
+
+test_obj_list_str = func_create_obj1(["hello", "world", "puthon"], "TestClass")
+test_obj_list_str.display_fields()
+# ------------ Задача №75 ------------
+
+
+def func_create_obj2(finished_obj, new_obj):
+    new_obj = finished_obj
+
+    return new_obj
+
+
+class TestClass5:
+    def __init__(self, value_str):
+        self.hello = value_str
+
+    def display(self):
+        print(f"Приветсвие: {self.hello}")
+
+
+test_obj_hello = TestClass5("Hello")
+name_new_test_obj = None
+new_test_obj = func_create_obj2(test_obj_hello, name_new_test_obj)
+new_test_obj.display()

@@ -2142,7 +2142,7 @@ print(f"A == B: {a1 == b1}")  # <- Сравнение объектов
 
 
 class MyClass:
-    def set(self, n):  # <- етоды для присваивания значения полю
+    def set(self, n):  # <- Методы для присваивания значения полю
         self.number = n
 
     def show(self):  # <- Метод для отображения значения поля
@@ -2710,7 +2710,7 @@ class MyClass:  # <- Класс
 
     def show(self):
         print(self.code)
-        if self.next != None:
+        if self.next is not None:
             self.next.show()
 
 
