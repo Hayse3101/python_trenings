@@ -980,7 +980,6 @@ test_obj_list_int.list_average()
 test_obj_list_int_str.display_fields_int_list()
 test_obj_list_int_str.list_average()
 
-
 # ------------ Задача №74 ------------
 
 
@@ -1004,6 +1003,7 @@ def func_create_obj1(list_str: list, name_class: str):
 
 test_obj_list_str = func_create_obj1(["hello", "world", "puthon"], "TestClass")
 test_obj_list_str.display_fields()
+
 # ------------ Задача №75 ------------
 
 
@@ -1025,3 +1025,80 @@ test_obj_hello = TestClass5("Hello")
 name_new_test_obj = None
 new_test_obj = func_create_obj2(test_obj_hello, name_new_test_obj)
 new_test_obj.display()
+
+# ------------ Задача №76 ------------
+
+
+def func_create_list_name_objs(num_obj: int):
+    name_obj = ''
+    for n in range(num_obj):
+        name_obj = "obj_" + str(n)
+        yield name_obj
+
+
+def func_create_obj3(name_obj: str):
+    class TestClass6:
+        odd_number = None
+
+        def input_odd_number(self):
+            self.odd_number = int(input("Ввдеите нечетное число:"))
+
+            if self.odd_number % 2 == 0:
+                self.odd_number = "четное"
+                print(f"Ввденое число ялвяется четным")
+            else:
+                print(f"Добавлено число: {self.odd_number}")
+
+    TestClass6.__name__ = name_obj
+    return TestClass6
+
+
+number_obj = int(input("Сколько будеть создано объектов: "))
+name_obj_list = []
+list_obj = []
+
+for name in func_create_list_name_objs(number_obj):
+    name_obj_list.append(name)
+
+for name in name_obj_list:
+    list_obj.append(func_create_obj3(name))
+
+print(f"Список объектов: {list_obj}")
+
+# ------------ Задача №77 ------------
+
+
+def func_create_obj4(obj_one, obj_two):
+    global obj_test
+
+    if len(obj_one.fields_list) > len(obj_two.fields_list):
+        difference = len(obj_one.fields_list) - len(obj_two.fields_list)
+        for i in range(difference):
+            obj_two.fields_list.append(obj_one.fields_list[i])
+    else:
+        difference = len(obj_two.fields_list) - len(obj_one.fields_list)
+        for i in range(difference):
+            obj_one.fields_list.append(obj_two.fields_list[i])
+
+    count_value = 0
+    for first_num in range(len(obj_one.fields_list)):
+        for second_num in range(count_value, len(obj_two.fields_list)):
+            obj_test.fields_list.append(obj_one.fields_list[first_num] + obj_two.fields_list[second_num])
+            count_value += 1
+            break
+
+
+class TestClass7:
+    def __init__(self, fields_list):
+        self.fields_list = fields_list
+
+
+first_obj = TestClass7([3, 1, 5, 7, 4])
+second_obj = TestClass7([2, 8, 6, 9, 0])
+obj_test = TestClass7([])
+func_create_obj4(first_obj, second_obj)
+
+# ------------ Задача №78 ------------
+# ------------ Задача №79 ------------
+# ------------ Задача №80 ------------
+
