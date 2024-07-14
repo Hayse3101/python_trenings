@@ -119,4 +119,73 @@ with ManagesFile('hello.txt') as f:
     f.write('привет, мир!')
     f.write('а теперь, пока!')
 
-""" Следующее продвижение в with стоит продолжить после подтягивания знаний в Python """
+# ---- Написание красивыйх API с менеджером контекста ----
+
+
+class Indenter:
+    def __init__(self):
+        self.level = 0
+
+    def __enter__(self):
+        self.level += 1
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.level -= 1
+
+    def print(self, text):
+        print(' ' * self.level + text)
+
+
+
+with Indenter() as indent:
+    indent.print('привет!')
+    with indent:
+        indent.print('здорово')
+        with indent:
+            indent.print('бонжур')
+    indent.print('эй')
+
+# ----------------------------- 2.4. Подчёркивания, дендеры и другое ----------------------------
+# ---- 1. Одинарный начальный символ подчёркивания: _var ----
+
+
+class Test_1:
+    def __init__(self):
+        self.foo = 11
+        self._bar = 23
+
+
+# ---- 2. Одинарный замыкающий символ подчёркивания: var_ ----
+
+"""
+def make_object(name, class):
+ -> SyntaxError: "invalid syntax"
+"""
+
+def make_object(name, class_):
+    pass
+
+
+# ---- 3. Двойной начальный символ подчёркивания: __var ----
+
+class Test_2:
+    def __init__(self):
+        self.foo = 11
+        self._bar = 23
+        self.__baz = 23  # <- _Test__baz
+
+
+t = Test_1()
+dir(t)
+
+
+class MangledMethod:
+    def __method(self):
+        return 42
+
+    def call_it(self):
+        self.__method()
+
+# ---- 4. Двойной начальный и замыкающий символ подчёркивания __var__ ----
+
